@@ -1,38 +1,38 @@
-let rerecenumber = 0
+let release = 0
 radio.onReceivedNumber(function (receivedNumber) {
     basic.clearScreen()
-    basic.pause(100)
-    if (receivedNumber == 0 && rerecenumber == 0 || receivedNumber == 1 && rerecenumber == 1 || receivedNumber == 2 && rerecenumber == 2) {
+    basic.pause(1000)
+    if (receivedNumber == 0 && release == 0 || receivedNumber == 1 && release == 1 || receivedNumber == 2 && release == 2) {
         basic.showIcon(IconNames.Triangle)
     }
-    if (receivedNumber == 0 && rerecenumber == 1 || receivedNumber == 1 && rerecenumber == 2 || receivedNumber == 2 && rerecenumber == 0) {
+    if (receivedNumber == 0 && release == 1 || receivedNumber == 1 && release == 2 || receivedNumber == 2 && release == 0) {
         basic.showIcon(IconNames.No)
     }
-    if (receivedNumber == 0 && rerecenumber == 2 || receivedNumber == 1 && rerecenumber == 0 || receivedNumber == 2 && rerecenumber == 1) {
+    if (receivedNumber == 0 && release == 2 || receivedNumber == 1 && release == 0 || receivedNumber == 2 && release == 1) {
         basic.showIcon(IconNames.SmallHeart)
     }
 })
 input.onButtonPressed(Button.A, function () {
     basic.showIcon(IconNames.Diamond)
-    basic.pause(2000)
+    basic.pause(500)
     radio.sendNumber(0)
-    rerecenumber = 0
+    release = 0
 })
 input.onGesture(Gesture.Shake, function () {
     basic.showIcon(IconNames.Heart)
-    rerecenumber = 3
+    release = 3
 })
 input.onButtonPressed(Button.AB, function () {
     basic.showIcon(IconNames.Square)
-    basic.pause(2000)
+    basic.pause(500)
     radio.sendNumber(2)
-    rerecenumber = 2
+    release = 2
 })
 input.onButtonPressed(Button.B, function () {
     basic.showIcon(IconNames.Scissors)
-    basic.pause(2000)
+    basic.pause(500)
     radio.sendNumber(1)
-    rerecenumber = 1
+    release = 1
 })
 basic.forever(function () {
     radio.setGroup(167)
